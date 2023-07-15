@@ -1,0 +1,15 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the domains_init() hook (in hooks/domains.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="domains-domain_name-<%%VALUE(domain_name)%%>" class="domains-domain_name"><%%SELECT%%><%%VALUE(domain_name)%%><%%ENDSELECT%%></td>
+		<td id="domains-expired-<%%VALUE(domain_name)%%>" class="domains-expired text-center"><%%SELECT%%><%%VALUE(expired)%%><%%ENDSELECT%%></td>
+		<td id="domains-client-<%%VALUE(domain_name)%%>" class="domains-client"><%%SELECT%%><%%VALUE(client)%%><%%ENDSELECT%%></td>
+		<td id="domains-registrar-<%%VALUE(domain_name)%%>" class="domains-registrar"><%%SELECT%%><%%VALUE(registrar)%%><%%ENDSELECT%%></td>
+		<td id="domains-dns_manager-<%%VALUE(domain_name)%%>" class="domains-dns_manager"><%%SELECT%%><%%VALUE(dns_manager)%%><%%ENDSELECT%%></td>
+		<td id="domains-mail_provider-<%%VALUE(domain_name)%%>" class="domains-mail_provider"><%%SELECT%%><%%VALUE(mail_provider)%%><%%ENDSELECT%%></td>
+		<td id="domains-registration_date-<%%VALUE(domain_name)%%>" class="domains-registration_date text-center"><%%SELECT%%><%%VALUE(registration_date)%%><%%ENDSELECT%%></td>
+		<td id="domains-next_renewal_date-<%%VALUE(domain_name)%%>" class="domains-next_renewal_date text-center"><%%SELECT%%><%%VALUE(next_renewal_date)%%><%%ENDSELECT%%></td>

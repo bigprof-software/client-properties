@@ -1,0 +1,11 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the subdomains_init() hook (in hooks/subdomains.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="subdomains-subdomain-<%%VALUE(id)%%>" class="subdomains-subdomain"><%%SELECT%%><%%VALUE(subdomain)%%><%%ENDSELECT%%></td>
+		<td id="subdomains-domain-<%%VALUE(id)%%>" class="subdomains-domain"><%%SELECT%%><%%VALUE(domain)%%><%%ENDSELECT%%></td>
+		<td id="subdomains-server-<%%VALUE(id)%%>" class="subdomains-server"><%%SELECT%%><%%VALUE(server)%%><%%ENDSELECT%%></td>
+		<td id="subdomains-comments-<%%VALUE(id)%%>" class="subdomains-comments"><%%SELECT%%><%%VALUE(comments)%%><%%ENDSELECT%%></td>

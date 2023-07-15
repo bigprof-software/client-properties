@@ -1,0 +1,11 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the subdomain_events_init() hook (in hooks/subdomain_events.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="subdomain_events-datetime-<%%VALUE(id)%%>" class="subdomain_events-datetime"><%%VALUE(datetime)%%></td>
+		<td id="subdomain_events-subdomain-<%%VALUE(id)%%>" class="subdomain_events-subdomain"><%%VALUE(subdomain)%%></td>
+		<td id="subdomain_events-event-<%%VALUE(id)%%>" class="subdomain_events-event"><%%VALUE(event)%%></td>
+		<td id="subdomain_events-details-<%%VALUE(id)%%>" class="subdomain_events-details"><%%VALUE(details)%%></td>

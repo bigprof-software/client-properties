@@ -1,0 +1,16 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the servers_init() hook (in hooks/servers.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="servers-ip_address-<%%VALUE(id)%%>" class="servers-ip_address"><%%VALUE(ip_address)%%></td>
+		<td id="servers-client-<%%VALUE(id)%%>" class="servers-client"><%%VALUE(client)%%></td>
+		<td id="servers-hosted_at-<%%VALUE(id)%%>" class="servers-hosted_at"><%%VALUE(hosted_at)%%></td>
+		<td id="servers-data_center-<%%VALUE(id)%%>" class="servers-data_center"><%%VALUE(data_center)%%></td>
+		<td id="servers-hostname-<%%VALUE(id)%%>" class="servers-hostname"><%%VALUE(hostname)%%></td>
+		<td id="servers-ram-<%%VALUE(id)%%>" class="servers-ram text-right"><%%VALUE(ram)%%></td>
+		<td id="servers-storage-<%%VALUE(id)%%>" class="servers-storage text-right"><%%VALUE(storage)%%></td>
+		<td id="servers-os-<%%VALUE(id)%%>" class="servers-os"><%%VALUE(os)%%></td>
+		<td id="servers-comments-<%%VALUE(id)%%>" class="servers-comments"><%%VALUE(comments)%%></td>

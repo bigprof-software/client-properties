@@ -1,0 +1,320 @@
+<!-- To change the layout of the detail view form, we recommend using JS code in hooks/servers-dv.js rather than editing this file -->
+
+<div id="detail-view"></div>
+<div class="panel-heading"><h3 class="panel-title"><strong><%%DETAIL_VIEW_TITLE%%></strong></h3></div>
+
+<div id="servers_dv_container-loading" class="text-center text-info text-bold vspacer-lg"><i class="glyphicon glyphicon-refresh loop-rotate"></i> <%%TRANSLATION(Loading ...)%%></div>
+
+<div class="panel-body hidden" id="servers_dv_container">
+	<!-- child links -->
+	<div class="row vspacer-md">
+		<div class="col-xs-12 children-links">
+			<a class="hidden-xs btn btn-default btn-lg pull-right hidden hspacer-sm vspacer-sm" href="subdomains_view.php?filterer_server=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="subdomains_link"><img src="resources/table_icons/domain_template.png"> Subdomains</a>
+			<a class="visible-xs btn btn-default btn-lg btn-block hidden vspacer-sm" href="subdomains_view.php?filterer_server=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="xs_subdomains_link"><img src="resources/table_icons/domain_template.png"> Subdomains</a>
+			<input type="hidden" id="subdomains_hclink" value="subdomains_view.php?filterer_server=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<a class="hidden-xs btn btn-default btn-lg pull-right hidden hspacer-sm vspacer-sm" href="server_events_view.php?filterer_server=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="server_events_link"><img src="resources/table_icons/file_extension_log.png"> Server events</a>
+			<a class="visible-xs btn btn-default btn-lg btn-block hidden vspacer-sm" href="server_events_view.php?filterer_server=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="xs_server_events_link"><img src="resources/table_icons/file_extension_log.png"> Server events</a>
+			<input type="hidden" id="server_events_hclink" value="server_events_view.php?filterer_server=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<hr class="hidden-xs hidden-sm">
+
+	<div class="row">
+		<!-- form inputs -->
+		<div class="col-md-8 col-lg-10" id="servers_dv_form">
+			<fieldset class="form-horizontal">
+
+				<!-- Field: ID -->
+				<div class="form-group servers-id">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3" for="id">ID</label>
+					<div class="col-lg-9">
+						<div class="form-control-static" id="id"><%%VALUE(id)%%></div>
+					</div>
+				</div>
+
+				<!-- Field: IP address -->
+				<div class="form-group servers-ip_address">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3" for="ip_address">IP address</label>
+					<div class="col-lg-9">
+						<input maxlength="40" type="text" class="form-control" name="ip_address" id="ip_address" value="<%%VALUE(ip_address)%%>">
+					</div>
+				</div>
+
+				<!-- Field: Client -->
+				<div class="form-group servers-client">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3" for="client" data-parent_link="view_parent_modal">Client</label>
+					<div class="col-lg-9">
+						<div class="lookup-flex"><%%COMBO(client)%%><%%PLINK(client)%%><%%ADDNEW(clients)%%></div>
+					</div>
+				</div>
+
+				<!-- Field: Hosted at -->
+				<div class="form-group servers-hosted_at">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3" for="hosted_at" data-parent_link="view_parent_modal">Hosted at</label>
+					<div class="col-lg-9">
+						<div class="lookup-flex"><%%COMBO(hosted_at)%%><%%PLINK(hosted_at)%%><%%ADDNEW(hosting_providers)%%></div>
+					</div>
+				</div>
+
+				<!-- Field: Data center -->
+				<div class="form-group servers-data_center">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3" for="data_center" data-parent_link="view_parent_modal">Data center</label>
+					<div class="col-lg-9">
+						<div class="lookup-flex"><%%COMBO(data_center)%%><%%PLINK(data_center)%%><%%ADDNEW(data_centers)%%></div>
+					</div>
+				</div>
+
+				<!-- Field: Hostname -->
+				<div class="form-group servers-hostname">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3" for="hostname">Hostname</label>
+					<div class="col-lg-9">
+						<input maxlength="40" type="text" class="form-control" name="hostname" id="hostname" value="<%%VALUE(hostname)%%>">
+					</div>
+				</div>
+
+				<!-- Field: RAM (GB) -->
+				<div class="form-group servers-ram">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3" for="ram">RAM (GB)</label>
+					<div class="col-lg-9">
+						<input maxlength="13" type="text" class="form-control" name="ram" id="ram" value="<%%VALUE(ram)%%>">
+					</div>
+				</div>
+
+				<!-- Field: Storage (GB) -->
+				<div class="form-group servers-storage">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3" for="storage">Storage (GB)</label>
+					<div class="col-lg-9">
+						<input maxlength="13" type="text" class="form-control" name="storage" id="storage" value="<%%VALUE(storage)%%>">
+					</div>
+				</div>
+
+				<!-- Field: OS -->
+				<div class="form-group servers-os">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3" for="os" data-parent_link="view_parent_modal">OS</label>
+					<div class="col-lg-9">
+						<div class="lookup-flex"><%%COMBO(os)%%><%%PLINK(os)%%><%%ADDNEW(operating_systems)%%></div>
+					</div>
+				</div>
+
+				<!-- Field: Comments -->
+				<div class="form-group servers-comments">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3" for="comments">Comments</label>
+					<div class="col-lg-9 has-nicedit">
+						<%%HTMLAREA(comments)%%>
+					</div>
+				</div>
+
+			</fieldset>
+		</div>
+
+		<!-- DV action buttons -->
+		<hr class="hidden-md hidden-lg">
+		<div class="col-md-4 col-lg-2" id="servers_dv_action_buttons">
+			<div class="btn-toolbar">
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%UPDATE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%DESELECT_BUTTON%%>
+					<%%DVPRINT_BUTTON%%>
+					<%%DELETE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%INSERT_BUTTON%%>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- child records -->
+	<hr>
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1">
+			<div id="servers-children" class="children-tabs">
+				<div class="text-center"><i class="glyphicon glyphicon-refresh loop-rotate"></i> <%%TRANSLATION(Loading ...)%%></div>
+			</div>
+		</div>
+	</div>
+
+</div><!-- /div class="panel-body" -->
+	<script>
+		$j(function() {
+			var add_new_mode = (!$j('input[name=SelectedID]').val());
+			var embedded_mode = ($j('input[name=Embedded]').val() == 1);
+
+			/* auto-close embedded page? */
+			var autoclose_mode = ($j('input[name=AutoClose]').val() == 1);
+			var record_added_ok = (location.search.split('record-added-ok=').length == 2);
+			var record_updated_ok = (location.search.split('record-updated-ok=').length == 2);
+			if((record_added_ok || record_updated_ok) && embedded_mode && autoclose_mode) {
+				setTimeout(AppGini.closeParentModal, 2000);
+			}
+
+			AppGini.once({
+				condition: function() { return bkLib != undefined; },
+				action: function() {
+					if($j('textarea#comments').length) new nicEditor({ fullPanel : true }).panelInstance('comments');
+				}
+			});
+
+			/* enable DV action buttons to float on scrolling down the form */
+			enable_dvab_floating();
+
+			$j('#servers_dv_container-loading').addClass('hidden');
+			$j('#servers_dv_container').removeClass('hidden');
+			if(!$j('.table_view').length || $j('[name=SelectedID]').val().length) AppGini.focusFormElement('servers', 'ip_address');
+
+			$j('form').eq(0).change(function() {
+				if($j(this).data('already_changed')) return;
+				if($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
+				$j(this).data('already_changed', true);
+			});
+
+			// try to detect rich text changes by adding 'input' handler after nicedit is loaded ...
+			AppGini.detectContentEditableChanges();
+
+			$j('a[href="<%%BASE_UPLOAD_PATH%%>"]').click(function() { return false; });
+
+			if(embedded_mode) {
+				/* hide links to children tables in embedded mode */
+				$j('.detail_view a[id$=_link]').remove();
+
+				/* append embedded mode to all links */
+				var append_embedded = function() {
+					$j('a[href]:not([href^="#"]):not([href^="javascript"]):not([href$="Embedded=1"]):not([href*="link.php?t="]):not([href^="mailto:"]):not([href$=".jpg"]):not([href$=".png"]):not([href$=".gif"])').each(
+						function() {
+							$j(this).attr('href', $j(this).attr('href') + '&Embedded=1');
+						}
+					);
+				}
+				setTimeout(append_embedded, 500);
+				setTimeout(append_embedded, 1500);
+				setTimeout(append_embedded, 2500);
+				setTimeout(append_embedded, 3500);
+			}
+
+			/* when no record is selected ('add new' mode) */
+			if(add_new_mode) {
+				/* hide links to children tables */
+				$j('.detail_view a[id$=_link]').remove();
+			} else {
+				post(
+					'parent-children.php', {
+						ParentTable: 'servers',
+						SelectedID: '<%%VALUE(id)%%>',
+						Operation: 'show-children'
+					},
+					'servers-children'
+				);
+			}
+
+			if(true /* !embedded_mode */) {
+				$j('.add_new_parent').click(function() {
+					var pt = $j(this).attr('id').replace(/_add_new$/, '');
+					modal_window({
+						url: pt + '_view.php?addNew_x=1&Embedded=1',
+						close: function() {
+							var field_id = $j('#' + pt + '_add_new').prevAll('input:hidden').eq(0).attr('id');
+							$j('#' + field_id + '-container').select2('focus').select2('focus');
+
+							/* if a new parent was added, select it */
+							var new_id = localStorage.getItem(pt + '_last_added_id');
+							if(new_id === null) return;
+
+							localStorage.removeItem(pt + '_last_added_id');
+							AppGini.lookupText({
+								id: new_id,
+								table: 'servers',
+								field: field_id,
+								callback: function(data) {
+									$j('#' + field_id + '-container').select2('data', data, true);
+								}
+							});
+						},
+						size: 'full',
+						title: $j(this).attr('title')
+					});
+				});
+			}
+
+			AppGini.hideViewParentLinks();
+
+			$j('form').on('click', '.view_parent', function() {
+				var pt = $j(this).attr('id').replace(/_view_parent$/, '');
+				if($j(this).prevAll('input:hidden').length) {
+					var parent_id = $j(this).prevAll('input:hidden').eq(0).val();
+				} else {
+					var parent_id = $j(this).prevAll().children('input:hidden').eq(0).val();
+				}
+
+				/* handle radio lookups */
+				if($j(this).prevAll('[type=radio]').length) {
+					parent_id = $j(this).prevAll('[type=radio]').eq(0).val();
+				}
+
+				if(parent_id != '{empty_value}' && parent_id != undefined && parent_id != '') {
+					var parent_link = $j(this).parents('.form-group').children('label').data('parent_link');
+					switch(parent_link) {
+						case 'view_parent_hidden':
+							break;
+						case 'view_parent_modal':
+							modal_window({
+								url: pt + '_view.php?Embedded=1&SelectedID=' + encodeURIComponent(parent_id),
+								close: function() {
+									var field_id = $j('#' + pt + '_view_parent').prevAll('input:hidden').eq(0).attr('id');
+									$j('#' + field_id + '-container').select2('focus').select2('focus');
+
+									// in case the parent record was updated, we should update auto-fills
+									var updaterName = field_id + '_update_autofills';
+									if(typeof(window[updaterName]) == 'function')
+										window[updaterName]();
+								},
+								size: 'full',
+								title: $j(this).attr('title')
+							});
+							break;
+						case 'view_parent_same_window':
+							window.location = pt + '_view.php?Embedded=' + (embedded_mode ? '1' : '') + '&SelectedID=' + encodeURIComponent(parent_id);
+							break;
+						case 'view_parent_new_window':
+							window.open(pt + '_view.php?SelectedID=' + encodeURIComponent(parent_id));
+							break;
+					}
+
+				}
+			});
+
+
+			/* load admin tools for admin user */
+			if(!add_new_mode) {
+				$j('body').append('<div id="admin-tools-appendix"></div>');
+				$j('#admin-tools-appendix').load(
+					'ajax_admin_tools.php?table=servers&id=<%%URLVALUE(id)%%>',
+					function(resp) {
+						if(!resp.length) return;
+						$j.ajax('ajax_admin_tools.php?action=get_admin_tools_js&table=servers&id=<%%URLVALUE(id)%%>');
+					}
+				);
+			}
+
+			/* warn user if 'add new' clicked while unsaved changes exist */
+			$j('#addNew').click(function() {
+				if($j('#deselect.btn-warning').length) {
+					return confirm('<%%TRANSLATION(discard changes confirm)%%>');
+				}
+			});
+
+		});
+	</script>

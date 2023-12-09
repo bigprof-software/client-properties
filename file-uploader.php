@@ -12,6 +12,8 @@
 		'resources/bootstrap-datetimepicker',
 		'resources/csv',
 		'resources/lib',
+		'resources/lib/PHPMailer',
+		'resources/lib/PHPMailer/PHPMailer',
 		'resources/hotkeys',
 		'resources/images',
 		'resources/moment',
@@ -97,7 +99,11 @@
 
 		$isSecure = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on';
 		$isLocalhost = $_SERVER['SERVER_NAME'] === 'localhost';
-		$isSecureProxy = isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https';
+		$isSecureProxy = isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && (
+            $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https'
+            || $_SERVER['HTTP_X_FORWARDED_SSL'] === 'on'
+            || $_SERVER['HTTP_X_FORWARDED_PORT'] === '443'
+        );
 
 		// Allow insecure connections from localhost or secure proxies
 		if(!$isSecure && ($isLocalhost || $isSecureProxy)) $isSecure = true;
@@ -118,7 +124,7 @@
 	function createNonExistentDirs() {
 		foreach(APPGINI_DIRS as $dir) {
 			if(!strlen($dir) || is_dir(__DIR__ . "/$dir")) continue;
-			@mkdir(__DIR__ . "/$dir");
+			@mkdir(__DIR__ . "/$dir", 0777, true);
 		}
 	}
 
